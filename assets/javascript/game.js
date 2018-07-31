@@ -9,6 +9,14 @@ var guessesSoFar = [];
 var userGuess = null;
 
 // Let computer pick a letter and store it in letterToBeGuessed
+var test1 = Math.random();
+var test = Math.floor(test1 * alphabetLetters.length);
+var letterToBeGuessed = alphabetLetters[test];
+console.log("test1:" +test1);
+console.log("Test:" +test);
+console.log("alphabetLetters.length: " + alphabetLetters.length);
+console.log("letterToBeGuessed: " + letterToBeGuessed);
+
 var letterToBeGuessed = alphabetLetters[Math.floor(Math.random() * alphabetLetters.length)];
 console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesLeft + " Guesses so far: " + guessesSoFar + " Computer picked: " + letterToBeGuessed);
 
@@ -18,6 +26,9 @@ document.onkeyup = function(event) {
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
 	// decrease guessesLeft by 1 if it is a new, valid letter
+//console.log("guessesSoFar.indexOf(userGuess):"+guessesSoFar.indexOf(userGuess));
+//console.log("alphabetLetters.indexOf(userGuess):"+alphabetLetters.indexOf(userGuess));
+
     if (guessesSoFar.indexOf(userGuess) < 0 && alphabetLetters.indexOf(userGuess) >= 0) {
 		guessesSoFar[guessesSoFar.length]=userGuess;
 		guessesLeft--;			
@@ -43,8 +54,9 @@ document.onkeyup = function(event) {
     
     var html = "<p><h1>The Psychic Game</h1><br></p>" + "<p><h4>Guess what letter I\'m thinking of</h4></p>" + "<p><h4>Wins: " + wins + "</h4></p>" + "<p><h4>Losses: " + losses + "</h4></p>" + "<p><h4>Guesses Left: " + guessesLeft + "</h4></p>" + "<p><h4>Your guesses so far: " + guessesSoFar + "</h4></p>";
 	
-	// Update game ID inner HTML
-	document.querySelector("#game").innerHTML = html;
+	// Update gameStatus ID inner HTML
+	//document.querySelector("#gameStatus").innerHTML = html;
+	document.getElementById("gameStatus").innerHTML = html;
 }
 
 
